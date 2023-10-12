@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+import {Characters} from "~/src/gql/graphql";
+
 const query = gql`
 query getCharacters {
   characters {
@@ -10,7 +12,6 @@ query getCharacters {
 `
 
 const {data} = useAsyncQuery(query);
-console.log(data.value, 'kex')
 </script>
 
 <template>
