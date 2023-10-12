@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import {Characters} from "~/src/gql/graphql";
+
+import {Character} from "~/types/graphql";
 
 const query = gql`
 query getCharacters {
