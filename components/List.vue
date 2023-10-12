@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-import {Character} from "~/types/graphql";
+import {Character, GetCharactersQuery} from "~/types/graphql";
 
 const query = gql`
 query getCharacters {
@@ -16,5 +15,5 @@ const {data} = useAsyncQuery(query);
 </script>
 
 <template>
-  Abiba
+  <CharacterItem />
 </template>
