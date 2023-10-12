@@ -11,14 +11,17 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
     "@nuxt/devtools": "latest",
     "@nuxtjs/apollo": "^5.0.0-alpha.7",
-    "nuxt": "^3.7.4",
-    "@graphql-codegen/cli": "5.0.0",
-    "@graphql-codegen/client-preset": "4.1.0"
+    "nuxt": "^3.7.4"
   },
   "dependencies": {
     "@graphql-codegen/cli": "5.0.0",
-    "graphql-config": "^5.0.3"
+    "@pinia/nuxt": "^0.4.11",
+    "@vue/apollo-composable": "^4.0.0-beta.11",
+    "graphql-config": "^5.0.3",
+    "pinia": "^2.1.6"
   }
 }

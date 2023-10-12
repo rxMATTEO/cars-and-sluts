@@ -2,7 +2,7 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "https://rickandmortyapi.com/graphql",
+  schema: "https://api.atlas-probeg.ru/graphql",
   documents: "components/**/*.vue",
   generates: {
     "types/": {
