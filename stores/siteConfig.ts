@@ -6,21 +6,21 @@ import {
   SeoTagType,
   CatalogType,
   SetType,
-  SiteSettingType
+  SiteSettingType,
 } from '~/apollo/queries/siteConfig';
 
 interface SettingSite {
-  counter_ym: string,
-  counter_vk: string,
-  contact_phone: string
-  contact_coordinates: string
-  contact_address: string
-  contact_schedule: string
-  legal_inn: string
-  legal_kpp: string
-  legal_name: string
-  legal_ogrn: string
-  legal_address: string
+  counter_ym: string;
+  counter_vk: string;
+  contact_phone: string;
+  contact_coordinates: string;
+  contact_address: string;
+  contact_schedule: string;
+  legal_inn: string;
+  legal_kpp: string;
+  legal_name: string;
+  legal_ogrn: string;
+  legal_address: string;
 }
 
 export const useSiteConfig = defineStore('siteConfig', {
@@ -30,7 +30,7 @@ export const useSiteConfig = defineStore('siteConfig', {
     catalog: <CatalogType[]>[],
     sets: <SetType[]>[],
 
-    isNight: <boolean>false
+    isNight: <boolean>false,
   }),
 
   actions: {
@@ -39,10 +39,14 @@ export const useSiteConfig = defineStore('siteConfig', {
     },
     async getSiteConfig() {
       try {
-        const { data } = await request<SiteConfigType>(siteConfigGql, undefined, true);
+        const { data } = await request<SiteConfigType>(
+          siteConfigGql,
+          undefined,
+          true,
+        );
         this.seoTag = data.value.seoTag;
         // @ts-ignore
-        data.value?.siteSettings.settings.map(setting => {
+        data.value?.siteSettings.settings.map((setting) => {
           // @ts-ignore
           this.settings[setting.key] = setting.value;
         });
@@ -51,6 +55,6 @@ export const useSiteConfig = defineStore('siteConfig', {
       } catch (error) {
         console.log(error);
       }
-    }
-  }
+    },
+  },
 });

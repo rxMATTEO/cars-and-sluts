@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: {
-        lang: 'ru'
+        lang: 'ru',
       },
       meta: [
         { name: 'robots', content: 'noindex, nofollow' },
@@ -14,7 +14,10 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'format-detection', content: 'telephone=no' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
+        {
+          name: 'apple-mobile-web-app-status-bar-style',
+          content: 'black-translucent',
+        },
       ],
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
@@ -25,36 +28,39 @@ export default defineNuxtConfig({
           rel: 'apple-touch-icon',
           href: 'https://www.atlas-dealer.ru/apple-touch-icon.png',
           type: 'image/png',
-          sizes: '180x180'
+          sizes: '180x180',
         },
-        { rel: 'apple-touch-icon', href: '/apple-touch-icon-512x512.png', type: 'image/png', sizes: '512x512' },
+        {
+          rel: 'apple-touch-icon',
+          href: '/apple-touch-icon-512x512.png',
+          type: 'image/png',
+          sizes: '512x512',
+        },
         {
           rel: 'apple-touch-icon',
           href: '/apple-touch-icon-120x120-precomposed.png',
           type: 'image/png',
-          sizes: '120x120'
+          sizes: '120x120',
         },
         {
-          rel: 'apple-touch-icon', href: '/apple-touch-icon-120x120.png', type: 'image/png',
-          sizes: '120x120'
-        }
+          rel: 'apple-touch-icon',
+          href: '/apple-touch-icon-120x120.png',
+          type: 'image/png',
+          sizes: '120x120',
+        },
       ],
-    }
+    },
   },
   devtools: { enabled: true },
-  modules: [
-    '@nuxtjs/apollo',
-    '@pinia/nuxt',
-    '@nuxt/image'
-  ],
+  modules: ['@nuxtjs/apollo', '@pinia/nuxt', '@nuxt/image'],
   apollo: {
     clients: {
       default: {
-        httpEndpoint: `https://${byApiDomain}/graphql`
+        httpEndpoint: `https://${byApiDomain}/graphql`,
       },
       new: {
         httpEndpoint: `https://${newApiDomain}/graphql`,
-      }
+      },
     },
-  }
+  },
 });

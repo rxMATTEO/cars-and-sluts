@@ -1,42 +1,40 @@
-
-
 export type TabType = {
-    title: string,
-    slug: string
-}
+  title: string;
+  slug: string;
+};
 export const tabs: TabType[] = [
   {
     title: 'Топ-предложения',
-    slug: 'best'
+    slug: 'best',
   },
   {
     title: 'Свежие',
-    slug: 'fresh'
+    slug: 'fresh',
   },
   {
     title: 'До 500 000 ₽',
-    slug: 'before-500'
+    slug: 'before-500',
   },
   {
     title: '7-местные',
-    slug: 'seats-7'
+    slug: 'seats-7',
   },
   {
     title: 'До 2 владельцев',
-    slug: 'owners-2'
+    slug: 'owners-2',
   },
   {
     title: 'До 5 лет',
-    slug: 'young'
+    slug: 'young',
   },
   {
     title: 'Седаны',
-    slug: 'sedan'
+    slug: 'sedan',
   },
   {
     title: 'Премиум',
-    slug: 'premium'
-  }
+    slug: 'premium',
+  },
 ];
 export const currentTab = ref<TabType>(tabs[0]);
 export const tabClick = async (tab: TabType) => {

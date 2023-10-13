@@ -8,10 +8,13 @@ export default defineEventHandler((event) => {
     sendRedirect(event, urlObj.href);
   }
 
-  if (urlObj.pathname !== '/' && urlObj.pathname.indexOf('.') == -1 && urlObj.pathname.endsWith('/')) {
+  if (
+    urlObj.pathname !== '/' &&
+    urlObj.pathname.indexOf('.') == -1 &&
+    urlObj.pathname.endsWith('/')
+  ) {
     urlObj.pathname = urlObj.pathname.slice(0, -1);
     sendRedirect(event, urlObj.href);
   }
   // detect other conditions and redirect to a new url
-
 });

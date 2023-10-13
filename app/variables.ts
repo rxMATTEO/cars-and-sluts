@@ -9,7 +9,7 @@ export const domains = [
     link: 'https://xn----7sbabk4czaugg.xn--p1ai',
     catalogRoute: 'used',
     hasGeneration: true,
-    root: true
+    root: true,
   },
 ];
-export const mainDomain = domains.find(value => value.root) || domains[0];
+export const mainDomain = domains.find((value) => value.root) || domains[0];

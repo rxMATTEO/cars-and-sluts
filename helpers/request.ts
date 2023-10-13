@@ -1,6 +1,11 @@
 import { DocumentNode } from 'graphql/language';
 
-export const request = async <Response, Request = undefined>(query: DocumentNode, variables?: Request, isNewApi?: boolean, isLazy?: boolean) => {
+export const request = async <Response, Request = undefined>(
+  query: DocumentNode,
+  variables?: Request,
+  isNewApi?: boolean,
+  isLazy?: boolean,
+) => {
   let siteId = null;
   let clientId = 'default';
   if (isNewApi) {
@@ -11,18 +16,30 @@ export const request = async <Response, Request = undefined>(query: DocumentNode
   }
 
   const assignVariables = {
-    site_id: siteId
+    site_id: siteId,
   };
   const params = { ...assignVariables, ...variables };
-  const removeEmptyParams = Object.fromEntries(Object.entries(params).filter(([_, v]) => v != null));
+  const removeEmptyParams = Object.fromEntries(
+    Object.entries(params).filter(([_, v]) => v != null),
+  );
 
-  return isLazy ? useLazyAsyncQuery<Response>({
-    query,
-    variables: removeEmptyParams,
-    clientId
-  }) : useAsyncQuery<Response>({ query, variables: removeEmptyParams, clientId });
+  return isLazy
+    ? useLazyAsyncQuery<Response>({
+        query,
+        variables: removeEmptyParams,
+        clientId,
+      })
+    : useAsyncQuery<Response>({
+        query,
+        variables: removeEmptyParams,
+      clientId,
+      });
 };
-export const postRequest = async <Response, Request = undefined>(query: DocumentNode, variables?: Request, isNewApi?: boolean) => {
+export const postRequest = async <Response, Request = undefined>(
+  query: DocumentNode,
+  variables?: Request,
+  isNewApi?: boolean,
+) => {
   let siteId = null;
   let clientId = 'default';
   if (isNewApi) {
@@ -33,9 +50,14 @@ export const postRequest = async <Response, Request = undefined>(query: Document
   }
 
   const assignVariables = {
-    site_id: siteId
+    site_id: siteId,
   };
   const params = { ...assignVariables, ...variables };
-  const removeEmptyParams = Object.fromEntries(Object.entries(params).filter(([_, v]) => v != null));
-  return useMutation<Response>(query, { variables: removeEmptyParams, clientId });
+  const removeEmptyParams = Object.fromEntries(
+    Object.entries(params).filter(([_, v]) => v != null),
+  );
+  return useMutation<Response>(query, {
+    variables: removeEmptyParams,
+    clientId,
+  });
 };

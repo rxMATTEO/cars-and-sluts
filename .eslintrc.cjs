@@ -1,43 +1,43 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-essential',
-    '@vue/eslint-config-typescript'
+    'plugin:nuxt/recommended',
   ],
   overrides: [
     {
       env: {
-        node: true
+        node: true,
       },
       files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: 'script'
-      }
-    }
+        sourceType: 'script',
+      },
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module',
   },
   globals: {
     onMounted: 'readonly',
     defineProps: 'readonly',
     defineEmits: 'readonly',
     defineExpose: 'readonly',
-    withDefaults: 'readonly'
+    withDefaults: 'readonly',
   },
-  plugins: ['vue'],
+  plugins: ['@typescript-eslint', 'vue'],
   rules: {
     indent: ['error', 2],
     'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'no-undef': 0,
-    'object-curly-spacing': ['error', 'always'],
-    'vue/no-mutating-props': 0
-  }
+  },
 };
