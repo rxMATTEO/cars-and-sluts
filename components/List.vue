@@ -1,27 +1,12 @@
 <script setup lang="ts">
-import {newOffersGql} from "~/apollo/queries/new/newOffers";
+import {newOffersGql, NewOfferType} from "~/apollo/queries/new/newOffers";
 import {request} from "~/helpers/request";
+import {_AsyncData} from "#app/composables/asyncData";
+type WrappedOffer = { offers : { data: NewOfferType[] } }
 
-const offers = gql
-    `query getOffers {
-    offers {
-      data {
-        bodyType {
-          name
-        }
-        color {
-          name
-        }
-        description
-        price
-        price_old
-      }
-    }
-}`
-
-const requestNewOffers = async (variables) => {
+async function requestNewOffers(variables): Promise<_AsyncData<WrappedOffer, Error>>{
   return await request(newOffersGql, variables, true, true)
-};
+}
 let variables = computed(() => {
   return {
     mark_slug: null,
@@ -31,10 +16,12 @@ let variables = computed(() => {
     limit: 4
   }
 })
-const {pending, data} = await requestNewOffers(variables.value)
-console.log(data)
+
+const { data: offers } = await requestNewOffers(variables.value);
 </script>
 
 <template>
-  <CharacterItem />
+  <div v-for="carOffer in offers.offers.data">
+    <OfferItem :offer="carOffer" />
+  </div>
 </template>

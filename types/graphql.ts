@@ -14,199 +14,988 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  /** The `Upload` scalar type represents a file upload. */
-  Upload: { input: any; output: any; }
 };
 
-export enum CacheControlScope {
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-}
+export type Article = {
+  __typename?: 'Article';
+  body?: Maybe<Scalars['String']['output']>;
+  category?: Maybe<ArticleCategory>;
+  /** Format output date */
+  createdAt?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['Int']['output'];
+  image?: Maybe<ArticleImageItem>;
+  image_preview?: Maybe<ArticleImagePreview>;
+  image_slide?: Maybe<Array<Maybe<ArticleImageSlide>>>;
+  long_title?: Maybe<Scalars['String']['output']>;
+  page_title?: Maybe<Scalars['String']['output']>;
+  /** Format output date */
+  publishedAt?: Maybe<Scalars['String']['output']>;
+  short_description?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Format output date */
+  updatedAt?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  video_youtube?: Maybe<Scalars['String']['output']>;
+  views?: Maybe<Scalars['String']['output']>;
+};
 
-export type Character = {
-  __typename?: 'Character';
-  /** Time at which the character was created in the database. */
-  created?: Maybe<Scalars['String']['output']>;
-  /** Episodes in which this character appeared. */
-  episode: Array<Maybe<Episode>>;
-  /** The gender of the character ('Female', 'Male', 'Genderless' or 'unknown'). */
-  gender?: Maybe<Scalars['String']['output']>;
-  /** The id of the character. */
-  id?: Maybe<Scalars['ID']['output']>;
-  /**
-   * Link to the character's image.
-   * All images are 300x300px and most are medium shots or portraits since they are intended to be used as avatars.
-   */
+
+export type ArticleCreatedAtArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  relative?: InputMaybe<Scalars['Boolean']['input']>;
+  sub_day?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type ArticlePublishedAtArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  relative?: InputMaybe<Scalars['Boolean']['input']>;
+  sub_day?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type ArticleUpdatedAtArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  relative?: InputMaybe<Scalars['Boolean']['input']>;
+  sub_day?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ArticleCategory = {
+  __typename?: 'ArticleCategory';
+  articles?: Maybe<Array<Maybe<Article>>>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['Int']['output'];
+  long_title?: Maybe<Scalars['String']['output']>;
+  page_title?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type ArticleCategoryArticlesArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type ArticleImageItem = {
+  __typename?: 'ArticleImageItem';
+  large?: Maybe<Scalars['String']['output']>;
+  large_webp?: Maybe<Scalars['String']['output']>;
+  medium?: Maybe<Scalars['String']['output']>;
+  medium_webp?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
+};
+
+export type ArticleImagePreview = {
+  __typename?: 'ArticleImagePreview';
+  small?: Maybe<Scalars['String']['output']>;
+  small_webp?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
+  thumb?: Maybe<Scalars['String']['output']>;
+  thumb_webp?: Maybe<Scalars['String']['output']>;
+};
+
+export type ArticleImageSlide = {
+  __typename?: 'ArticleImageSlide';
+  src?: Maybe<Scalars['String']['output']>;
+  thumb?: Maybe<Scalars['String']['output']>;
+};
+
+export type ArticlesPaginate = {
+  __typename?: 'ArticlesPaginate';
+  /** Current page of the cursor */
+  current_page: Scalars['Int']['output'];
+  /** List of items on the current page */
+  data?: Maybe<Array<Maybe<Article>>>;
+  /** Number of the first item returned */
+  from?: Maybe<Scalars['Int']['output']>;
+  /** Determines if cursor has more pages after the current page */
+  has_more_pages: Scalars['Boolean']['output'];
+  /** The last page (number of pages) */
+  last_page: Scalars['Int']['output'];
+  /** Number of items returned per page */
+  per_page: Scalars['Int']['output'];
+  /** Number of the last item returned */
+  to?: Maybe<Scalars['Int']['output']>;
+  /** Number of total items selected by the query */
+  total: Scalars['Int']['output'];
+};
+
+export type Bank = {
+  __typename?: 'Bank';
+  approval?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['Int']['output'];
   image?: Maybe<Scalars['String']['output']>;
-  /** The character's last known location */
-  location?: Maybe<Location>;
-  /** The name of the character. */
+  image_car?: Maybe<BankImageCar>;
+  license_file?: Maybe<Scalars['String']['output']>;
+  license_title?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  rate?: Maybe<Scalars['Float']['output']>;
+  rating?: Maybe<Scalars['Float']['output']>;
+  request?: Maybe<Scalars['Int']['output']>;
+  site_text?: Maybe<SiteText>;
+  slug: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type BankImageCar = {
+  __typename?: 'BankImageCar';
+  small?: Maybe<Scalars['String']['output']>;
+  small_webp?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
+  thumb?: Maybe<Scalars['String']['output']>;
+  thumb_webp?: Maybe<Scalars['String']['output']>;
+};
+
+export type BodyType = {
+  __typename?: 'BodyType';
+  id: Scalars['Int']['output'];
   name?: Maybe<Scalars['String']['output']>;
-  /** The character's origin location */
-  origin?: Maybe<Location>;
-  /** The species of the character. */
-  species?: Maybe<Scalars['String']['output']>;
-  /** The status of the character ('Alive', 'Dead' or 'unknown'). */
-  status?: Maybe<Scalars['String']['output']>;
-  /** The type or subspecies of the character. */
-  type?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
-export type Characters = {
-  __typename?: 'Characters';
-  info?: Maybe<Info>;
-  results?: Maybe<Array<Maybe<Character>>>;
+export type BodyTypeField = {
+  __typename?: 'BodyTypeField';
+  id?: Maybe<Scalars['Int']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
-export type Episode = {
-  __typename?: 'Episode';
-  /** The air date of the episode. */
-  air_date?: Maybe<Scalars['String']['output']>;
-  /** List of characters who have been seen in the episode. */
-  characters: Array<Maybe<Character>>;
-  /** Time at which the episode was created in the database. */
-  created?: Maybe<Scalars['String']['output']>;
-  /** The code of the episode. */
-  episode?: Maybe<Scalars['String']['output']>;
-  /** The id of the episode. */
-  id?: Maybe<Scalars['ID']['output']>;
-  /** The name of the episode. */
+export type ChosenFieldType = {
+  __typename?: 'ChosenFieldType';
+  bodyType?: Maybe<Array<Maybe<BodyTypeField>>>;
+  driveType?: Maybe<Array<Maybe<DriveTypeField>>>;
+  engineType?: Maybe<Array<Maybe<EngineTypeField>>>;
+  folder?: Maybe<Array<Maybe<FolderField>>>;
+  gearbox?: Maybe<Array<Maybe<GearboxField>>>;
+  generation?: Maybe<Array<Maybe<GenerationField>>>;
+  mark?: Maybe<Array<Maybe<MarkField>>>;
+  owner?: Maybe<Array<Maybe<OwnerField>>>;
+  priceFrom?: Maybe<Scalars['Int']['output']>;
+  priceTo?: Maybe<Scalars['Int']['output']>;
+  runFrom?: Maybe<Scalars['Int']['output']>;
+  runTo?: Maybe<Scalars['Int']['output']>;
+  yearFrom?: Maybe<Scalars['Int']['output']>;
+  yearTo?: Maybe<Scalars['Int']['output']>;
+};
+
+export type Color = {
+  __typename?: 'Color';
+  id: Scalars['Int']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type Complectation = {
+  __typename?: 'Complectation';
+  id: Scalars['Int']['output'];
   name?: Maybe<Scalars['String']['output']>;
 };
 
-export type Episodes = {
-  __typename?: 'Episodes';
-  info?: Maybe<Info>;
-  results?: Maybe<Array<Maybe<Episode>>>;
+export type Dealer = {
+  __typename?: 'Dealer';
+  address?: Maybe<Scalars['String']['output']>;
+  city?: Maybe<Scalars['String']['output']>;
+  coordinates?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['Int']['output'];
+  image_logo?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<DealerImage>>>;
+  metro?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  rating?: Maybe<Scalars['Float']['output']>;
+  schedule?: Maybe<Scalars['String']['output']>;
+  short_description?: Maybe<Scalars['String']['output']>;
+  site?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  youtube_playlist_review?: Maybe<Scalars['String']['output']>;
 };
 
-export type FilterCharacter = {
-  gender?: InputMaybe<Scalars['String']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  species?: InputMaybe<Scalars['String']['input']>;
-  status?: InputMaybe<Scalars['String']['input']>;
-  type?: InputMaybe<Scalars['String']['input']>;
+export type DealerImage = {
+  __typename?: 'DealerImage';
+  medium?: Maybe<Scalars['String']['output']>;
+  medium_webp?: Maybe<Scalars['String']['output']>;
+  small?: Maybe<Scalars['String']['output']>;
+  small_webp?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
 };
 
-export type FilterEpisode = {
-  episode?: InputMaybe<Scalars['String']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type FilterLocation = {
-  dimension?: InputMaybe<Scalars['String']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  type?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type Info = {
-  __typename?: 'Info';
-  /** The length of the response. */
-  count?: Maybe<Scalars['Int']['output']>;
-  /** Number of the next page (if it exists) */
-  next?: Maybe<Scalars['Int']['output']>;
-  /** The amount of pages. */
-  pages?: Maybe<Scalars['Int']['output']>;
-  /** Number of the previous page (if it exists) */
-  prev?: Maybe<Scalars['Int']['output']>;
-};
-
-export type Location = {
-  __typename?: 'Location';
-  /** Time at which the location was created in the database. */
-  created?: Maybe<Scalars['String']['output']>;
-  /** The dimension in which the location is located. */
-  dimension?: Maybe<Scalars['String']['output']>;
-  /** The id of the location. */
-  id?: Maybe<Scalars['ID']['output']>;
-  /** The name of the location. */
+export type DriveType = {
+  __typename?: 'DriveType';
+  id: Scalars['Int']['output'];
   name?: Maybe<Scalars['String']['output']>;
-  /** List of characters who have been last seen in the location. */
-  residents: Array<Maybe<Character>>;
-  /** The type of the location. */
-  type?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
-export type Locations = {
-  __typename?: 'Locations';
-  info?: Maybe<Info>;
-  results?: Maybe<Array<Maybe<Location>>>;
+export type DriveTypeField = {
+  __typename?: 'DriveTypeField';
+  id?: Maybe<Scalars['Int']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type EngineType = {
+  __typename?: 'EngineType';
+  id: Scalars['Int']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type EngineTypeField = {
+  __typename?: 'EngineTypeField';
+  id?: Maybe<Scalars['Int']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+/** Order object */
+export type Feedback = {
+  __typename?: 'Feedback';
+  /** The id of the Order */
+  id?: Maybe<Scalars['Int']['output']>;
+};
+
+export type Folder = {
+  __typename?: 'Folder';
+  /** Идентификатор */
+  id: Scalars['Int']['output'];
+  /** Кол-во объявлений */
+  offers_count?: Maybe<Scalars['Int']['output']>;
+  /** Алиас */
+  slug: Scalars['String']['output'];
+  /** Наименование */
+  title: Scalars['String']['output'];
+  /** Наименование на русском */
+  title_rus?: Maybe<Scalars['String']['output']>;
+};
+
+export type FolderField = {
+  __typename?: 'FolderField';
+  id?: Maybe<Scalars['Int']['output']>;
+  mark_id?: Maybe<Scalars['Int']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type FolderGeneration = {
+  __typename?: 'FolderGeneration';
+  generations?: Maybe<Array<Maybe<Generation>>>;
+  /** Идентификатор */
+  id: Scalars['Int']['output'];
+  /** Кол-во объявлений */
+  offers_count?: Maybe<Scalars['Int']['output']>;
+  /** Алиас */
+  slug: Scalars['String']['output'];
+  /** Наименование */
+  title: Scalars['String']['output'];
+  /** Наименование на русском */
+  title_rus?: Maybe<Scalars['String']['output']>;
+};
+
+export type Gearbox = {
+  __typename?: 'Gearbox';
+  id: Scalars['Int']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  title_short?: Maybe<Scalars['String']['output']>;
+  title_short_rus?: Maybe<Scalars['String']['output']>;
+};
+
+export type GearboxField = {
+  __typename?: 'GearboxField';
+  id?: Maybe<Scalars['Int']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  title_short?: Maybe<Scalars['String']['output']>;
+  title_short_rus?: Maybe<Scalars['String']['output']>;
+};
+
+export type Generation = {
+  __typename?: 'Generation';
+  id?: Maybe<Scalars['Int']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  /** The count of generations */
+  offers_count?: Maybe<Scalars['Int']['output']>;
+  slug: Scalars['String']['output'];
+  year_begin?: Maybe<Scalars['Int']['output']>;
+  year_end?: Maybe<Scalars['Int']['output']>;
+};
+
+export type GenerationField = {
+  __typename?: 'GenerationField';
+  id?: Maybe<Scalars['Int']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type KeyValue = {
+  __typename?: 'KeyValue';
+  key?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type Mark = {
+  __typename?: 'Mark';
+  /** Идентификатор */
+  id: Scalars['Int']['output'];
+  /** Кол-во объявлений */
+  offers_count?: Maybe<Scalars['Int']['output']>;
+  /** Сортировка марки */
+  order_column?: Maybe<Scalars['Int']['output']>;
+  /** Алиас */
+  slug: Scalars['String']['output'];
+  /** Наименование */
+  title: Scalars['String']['output'];
+  /** Наименование на русском */
+  title_rus?: Maybe<Scalars['String']['output']>;
+};
+
+export type MarkField = {
+  __typename?: 'MarkField';
+  id?: Maybe<Scalars['Int']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type MarkFolder = {
+  __typename?: 'MarkFolder';
+  folders?: Maybe<Array<Maybe<FolderGeneration>>>;
+  /** Идентификатор */
+  id: Scalars['Int']['output'];
+  /** Кол-во объявлений */
+  offers_count?: Maybe<Scalars['Int']['output']>;
+  /** Алиас */
+  slug: Scalars['String']['output'];
+  /** Наименование */
+  title: Scalars['String']['output'];
+  /** Наименование на русском */
+  title_rus?: Maybe<Scalars['String']['output']>;
+};
+
+export type Modification = {
+  __typename?: 'Modification';
+  bodyType?: Maybe<Array<Maybe<TitleName>>>;
+  generation?: Maybe<Array<Maybe<Generation>>>;
+  id: Scalars['Int']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  feedback?: Maybe<Feedback>;
+};
+
+
+export type MutationFeedbackArgs = {
+  bank_title?: InputMaybe<Scalars['String']['input']>;
+  client_age?: InputMaybe<Scalars['String']['input']>;
+  client_name?: InputMaybe<Scalars['String']['input']>;
+  client_phone: Scalars['String']['input'];
+  client_region?: InputMaybe<Scalars['String']['input']>;
+  client_session?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_body_type?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_engine?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_gearbox?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_mark?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_model?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_owners?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_price?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_run?: InputMaybe<Scalars['String']['input']>;
+  client_vehicle_year?: InputMaybe<Scalars['String']['input']>;
+  comment?: InputMaybe<Scalars['String']['input']>;
+  credit_initial_fee?: InputMaybe<Scalars['String']['input']>;
+  credit_period?: InputMaybe<Scalars['String']['input']>;
+  external_id?: InputMaybe<Scalars['Int']['input']>;
+  external_unique_id?: InputMaybe<Scalars['String']['input']>;
+  offer_price?: InputMaybe<Scalars['String']['input']>;
+  offer_title?: InputMaybe<Scalars['String']['input']>;
+  site_id: Scalars['Int']['input'];
+  type: Scalars['String']['input'];
+  utm_campaign?: InputMaybe<Scalars['String']['input']>;
+  utm_content?: InputMaybe<Scalars['String']['input']>;
+  utm_medium?: InputMaybe<Scalars['String']['input']>;
+  utm_source?: InputMaybe<Scalars['String']['input']>;
+  utm_term?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Offer = {
+  __typename?: 'Offer';
+  /** Кузов */
+  bodyType?: Maybe<BodyType>;
+  /** Категория */
+  category_enum?: Maybe<Scalars['String']['output']>;
+  /** Цвет */
+  color?: Maybe<Color>;
+  /** Название комплектации */
+  complectation?: Maybe<Complectation>;
+  /** Format output date */
+  createdAt?: Maybe<Scalars['String']['output']>;
+  /** Автосалон */
+  dealer?: Maybe<Dealer>;
+  /** Текстовое описание для сайта */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Привод */
+  driveType?: Maybe<DriveType>;
+  /** Двигатель */
+  engineType?: Maybe<EngineType>;
+  /** Мощность двигателя */
+  engine_power?: Maybe<Scalars['Int']['output']>;
+  /** Объем двигателя */
+  engine_volume?: Maybe<Scalars['Float']['output']>;
+  /** Сгруппированные дополнительные характеристики */
+  equipment_groups?: Maybe<Array<Maybe<TitleValues>>>;
+  /** Внешний идентификатор */
+  external_id?: Maybe<Scalars['Int']['output']>;
+  /** Внешний уникальный идентификатор */
+  external_unique_id?: Maybe<Scalars['String']['output']>;
+  /** Модель */
+  folder?: Maybe<Folder>;
+  /** КПП */
+  gearbox?: Maybe<Gearbox>;
+  /** Поколение */
+  generation?: Maybe<Generation>;
+  /** Идентификатор */
+  id: Scalars['Int']['output'];
+  /** Изображения */
+  images?: Maybe<Array<Maybe<OfferImage>>>;
+  /** Активное объявление */
+  is_active?: Maybe<Scalars['Boolean']['output']>;
+  /** На складе */
+  is_stock?: Maybe<Scalars['Boolean']['output']>;
+  /** Марка */
+  mark?: Maybe<Mark>;
+  /** Модификация */
+  modification?: Maybe<Modification>;
+  name: Scalars['String']['output'];
+  /** Владельцы */
+  owner?: Maybe<Owner>;
+  /** Цена, руб */
+  price: Scalars['Int']['output'];
+  /** Старая цена, руб */
+  price_old?: Maybe<Scalars['Int']['output']>;
+  /** Рейтинг */
+  rating?: Maybe<Rating>;
+  /** Пробег, км */
+  run?: Maybe<Scalars['Int']['output']>;
+  /** Format output date */
+  updatedAt?: Maybe<Scalars['String']['output']>;
+  /** Ссылка на видео */
+  video?: Maybe<Scalars['String']['output']>;
+  /** VIN-номер */
+  vin?: Maybe<Scalars['String']['output']>;
+  /** Руль */
+  wheel?: Maybe<Wheel>;
+  /** Год */
+  year?: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type OfferCreatedAtArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  relative?: InputMaybe<Scalars['Boolean']['input']>;
+  sub_day?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type OfferUpdatedAtArgs = {
+  format?: InputMaybe<Scalars['String']['input']>;
+  relative?: InputMaybe<Scalars['Boolean']['input']>;
+  sub_day?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type OfferFilterValues = {
+  __typename?: 'OfferFilterValues';
+  bodyType?: Maybe<Array<Maybe<BodyTypeField>>>;
+  chosen?: Maybe<ChosenFieldType>;
+  driveType?: Maybe<Array<Maybe<DriveTypeField>>>;
+  engineType?: Maybe<Array<Maybe<EngineTypeField>>>;
+  folder?: Maybe<Array<Maybe<FolderField>>>;
+  gearbox?: Maybe<Array<Maybe<GearboxField>>>;
+  generation?: Maybe<Array<Maybe<GenerationField>>>;
+  mark?: Maybe<Array<Maybe<MarkField>>>;
+  owner?: Maybe<Array<Maybe<OwnerField>>>;
+  price?: Maybe<Array<Maybe<Scalars['Int']['output']>>>;
+  run?: Maybe<Array<Maybe<Scalars['Int']['output']>>>;
+  year?: Maybe<Array<Maybe<Scalars['Int']['output']>>>;
+};
+
+export type OfferImage = {
+  __typename?: 'OfferImage';
+  medium?: Maybe<Scalars['String']['output']>;
+  medium_webp?: Maybe<Scalars['String']['output']>;
+  original?: Maybe<Scalars['String']['output']>;
+  small?: Maybe<Scalars['String']['output']>;
+  small_webp?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Используйте medium */
+  src?: Maybe<Scalars['String']['output']>;
+  /** @deprecated Используйте small */
+  thumb?: Maybe<Scalars['String']['output']>;
+  tiny?: Maybe<Scalars['String']['output']>;
+  tiny_webp?: Maybe<Scalars['String']['output']>;
+};
+
+export type OfferTypePagination = {
+  __typename?: 'OfferTypePagination';
+  /** Current page of the cursor */
+  current_page: Scalars['Int']['output'];
+  /** List of items on the current page */
+  data?: Maybe<Array<Maybe<Offer>>>;
+  /** Number of the first item returned */
+  from?: Maybe<Scalars['Int']['output']>;
+  /** Determines if cursor has more pages after the current page */
+  has_more_pages: Scalars['Boolean']['output'];
+  /** The last page (number of pages) */
+  last_page: Scalars['Int']['output'];
+  /** Number of items returned per page */
+  per_page: Scalars['Int']['output'];
+  /** Number of the last item returned */
+  to?: Maybe<Scalars['Int']['output']>;
+  /** Number of total items selected by the query */
+  total: Scalars['Int']['output'];
+};
+
+export type OfferUnionType = OfferUrlFilterPaginationType | OfferUrlType;
+
+export type OfferUrlFilterPaginationType = {
+  __typename?: 'OfferUrlFilterPaginationType';
+  body_type_id_array?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  category?: Maybe<Scalars['String']['output']>;
+  engine_type_id_array?: Maybe<Array<Maybe<Scalars['Int']['output']>>>;
+  folder_slug_array?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  generation_slug_array?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  mark_slug_array?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  year_from?: Maybe<Scalars['Int']['output']>;
+};
+
+export type OfferUrlType = {
+  __typename?: 'OfferUrlType';
+  external_id?: Maybe<Scalars['Int']['output']>;
+  folder_slug?: Maybe<Scalars['String']['output']>;
+  mark_slug?: Maybe<Scalars['String']['output']>;
+};
+
+export type Owner = {
+  __typename?: 'Owner';
+  id: Scalars['Int']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  number: Scalars['Int']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type OwnerField = {
+  __typename?: 'OwnerField';
+  id?: Maybe<Scalars['Int']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  /** Get a specific character by ID */
-  character?: Maybe<Character>;
-  /** Get the list of all characters */
-  characters?: Maybe<Characters>;
-  /** Get a list of characters selected by ids */
-  charactersByIds?: Maybe<Array<Maybe<Character>>>;
-  /** Get a specific episode by ID */
-  episode?: Maybe<Episode>;
-  /** Get the list of all episodes */
-  episodes?: Maybe<Episodes>;
-  /** Get a list of episodes selected by ids */
-  episodesByIds?: Maybe<Array<Maybe<Episode>>>;
-  /** Get a specific locations by ID */
-  location?: Maybe<Location>;
-  /** Get the list of all locations */
-  locations?: Maybe<Locations>;
-  /** Get a list of locations selected by ids */
-  locationsByIds?: Maybe<Array<Maybe<Location>>>;
+  /** Статья */
+  article?: Maybe<Article>;
+  /** Категории статей */
+  articleCategory?: Maybe<Array<Maybe<ArticleCategory>>>;
+  /** Список статей */
+  articlesPaginate?: Maybe<ArticlesPaginate>;
+  /** Банк */
+  bank?: Maybe<Bank>;
+  /** Список банков */
+  banks?: Maybe<Array<Maybe<Bank>>>;
+  /** Автосалон */
+  dealer?: Maybe<Dealer>;
+  /** Список автосалонов */
+  dealers?: Maybe<Array<Maybe<Dealer>>>;
+  /** Список моделей */
+  folders?: Maybe<Array<Maybe<Folder>>>;
+  /** Список поколений */
+  generations?: Maybe<Array<Maybe<Generation>>>;
+  /** Список марок */
+  markFolderGeneration?: Maybe<Array<Maybe<MarkFolder>>>;
+  /** Список марок */
+  marks?: Maybe<Array<Maybe<Mark>>>;
+  /** Объявление */
+  offer?: Maybe<Offer>;
+  /** Фильтр объявлений */
+  offerFilters?: Maybe<OfferFilterValues>;
+  /** Определение объявление или фильтр */
+  offerUrl?: Maybe<OfferUnionType>;
+  /** Список объявлений */
+  offers?: Maybe<OfferTypePagination>;
+  /** Список регионов */
+  regions?: Maybe<Array<Maybe<Region>>>;
+  /** SEO теги */
+  seoTag?: Maybe<SeoTag>;
+  /** Настройки сайта */
+  settings?: Maybe<SiteSetting>;
+  /** Список баннеров */
+  slides?: Maybe<Array<Maybe<Slide>>>;
+  /** Список категорий услуг сервиса */
+  stationCategory?: Maybe<Array<Maybe<StationCategory>>>;
+  /** Список историй */
+  stories?: Maybe<Array<Maybe<Story>>>;
+  /** Список содержимого историй */
+  storyContents?: Maybe<Array<Maybe<StoryContent>>>;
 };
 
 
-export type QueryCharacterArgs = {
-  id: Scalars['ID']['input'];
+export type QueryArticleArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryCharactersArgs = {
-  filter?: InputMaybe<FilterCharacter>;
+export type QueryArticleCategoryArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryArticlesPaginateArgs = {
+  category_url?: InputMaybe<Scalars['String']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
   page?: InputMaybe<Scalars['Int']['input']>;
+  site_id?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type QueryCharactersByIdsArgs = {
-  ids: Array<Scalars['ID']['input']>;
+export type QueryBankArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryEpisodeArgs = {
-  id: Scalars['ID']['input'];
+export type QueryBanksArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type QueryEpisodesArgs = {
-  filter?: InputMaybe<FilterEpisode>;
+export type QueryDealerArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryDealersArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryFoldersArgs = {
+  category?: InputMaybe<Scalars['String']['input']>;
+  mark_id?: InputMaybe<Scalars['Int']['input']>;
+  mark_slug?: InputMaybe<Scalars['String']['input']>;
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryGenerationsArgs = {
+  category?: InputMaybe<Scalars['String']['input']>;
+  folder_id?: InputMaybe<Scalars['Int']['input']>;
+  folder_slug?: InputMaybe<Scalars['String']['input']>;
+  mark_slug?: InputMaybe<Scalars['String']['input']>;
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryMarkFolderGenerationArgs = {
+  category?: InputMaybe<Scalars['String']['input']>;
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryMarksArgs = {
+  category?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryOfferArgs = {
+  external_id?: InputMaybe<Scalars['Int']['input']>;
+  folder_slug?: InputMaybe<Scalars['String']['input']>;
+  generation_slug?: InputMaybe<Scalars['String']['input']>;
+  mark_slug?: InputMaybe<Scalars['String']['input']>;
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryOfferFiltersArgs = {
+  body_type_id?: InputMaybe<Scalars['Int']['input']>;
+  body_type_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  drive_type_id?: InputMaybe<Scalars['Int']['input']>;
+  drive_type_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  engine_type_id?: InputMaybe<Scalars['Int']['input']>;
+  engine_type_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  except_external_id?: InputMaybe<Scalars['Int']['input']>;
+  external_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  folder_id?: InputMaybe<Scalars['Int']['input']>;
+  folder_slug?: InputMaybe<Scalars['String']['input']>;
+  folder_slug_array?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  gearbox_id?: InputMaybe<Scalars['Int']['input']>;
+  gearbox_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  generation_id?: InputMaybe<Scalars['Int']['input']>;
+  generation_slug?: InputMaybe<Scalars['String']['input']>;
+  generation_slug_array?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  mark_id?: InputMaybe<Scalars['Int']['input']>;
+  mark_slug?: InputMaybe<Scalars['String']['input']>;
+  mark_slug_array?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  owner_id?: InputMaybe<Scalars['Int']['input']>;
+  owner_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   page?: InputMaybe<Scalars['Int']['input']>;
+  price_from?: InputMaybe<Scalars['Int']['input']>;
+  price_to?: InputMaybe<Scalars['Int']['input']>;
+  run_from?: InputMaybe<Scalars['Int']['input']>;
+  run_to?: InputMaybe<Scalars['Int']['input']>;
+  set?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  year_from?: InputMaybe<Scalars['Int']['input']>;
+  year_to?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type QueryEpisodesByIdsArgs = {
-  ids: Array<Scalars['ID']['input']>;
+export type QueryOfferUrlArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryLocationArgs = {
-  id: Scalars['ID']['input'];
-};
-
-
-export type QueryLocationsArgs = {
-  filter?: InputMaybe<FilterLocation>;
+export type QueryOffersArgs = {
+  body_type_id?: InputMaybe<Scalars['Int']['input']>;
+  body_type_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  drive_type_id?: InputMaybe<Scalars['Int']['input']>;
+  drive_type_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  engine_type_id?: InputMaybe<Scalars['Int']['input']>;
+  engine_type_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  except_external_id?: InputMaybe<Scalars['Int']['input']>;
+  external_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  folder_id?: InputMaybe<Scalars['Int']['input']>;
+  folder_slug?: InputMaybe<Scalars['String']['input']>;
+  folder_slug_array?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  gearbox_id?: InputMaybe<Scalars['Int']['input']>;
+  gearbox_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  generation_id?: InputMaybe<Scalars['Int']['input']>;
+  generation_slug?: InputMaybe<Scalars['String']['input']>;
+  generation_slug_array?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  mark_id?: InputMaybe<Scalars['Int']['input']>;
+  mark_slug?: InputMaybe<Scalars['String']['input']>;
+  mark_slug_array?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  owner_id?: InputMaybe<Scalars['Int']['input']>;
+  owner_id_array?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   page?: InputMaybe<Scalars['Int']['input']>;
+  price_from?: InputMaybe<Scalars['Int']['input']>;
+  price_to?: InputMaybe<Scalars['Int']['input']>;
+  run_from?: InputMaybe<Scalars['Int']['input']>;
+  run_to?: InputMaybe<Scalars['Int']['input']>;
+  set?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  year_from?: InputMaybe<Scalars['Int']['input']>;
+  year_to?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
-export type QueryLocationsByIdsArgs = {
-  ids: Array<Scalars['ID']['input']>;
+export type QueryRegionsArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type GetCharactersQueryVariables = Exact<{ [key: string]: never; }>;
+
+export type QuerySeoTagArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
 
 
-export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', results?: Array<{ __typename?: 'Character', name?: string | null } | null> | null } | null };
+export type QuerySettingsArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
 
 
-export const GetCharactersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getCharacters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"characters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"results"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<GetCharactersQuery, GetCharactersQueryVariables>;
+export type QuerySlidesArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryStationCategoryArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryStoriesArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryStoryContentsArgs = {
+  site_id?: InputMaybe<Scalars['Int']['input']>;
+  story_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type Rating = {
+  __typename?: 'Rating';
+  rating_body?: Maybe<Scalars['Float']['output']>;
+  rating_interior?: Maybe<Scalars['Float']['output']>;
+  rating_technical?: Maybe<Scalars['Float']['output']>;
+  rating_total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Region = {
+  __typename?: 'Region';
+  id?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type SeoTag = {
+  __typename?: 'SeoTag';
+  crumbs?: Maybe<Array<Maybe<SeoTagCrumbs>>>;
+  /** The description of the seo tags */
+  description?: Maybe<Scalars['String']['output']>;
+  /** The title of the seo tags */
+  page_title?: Maybe<Scalars['String']['output']>;
+  site_text?: Maybe<SiteText>;
+  /** The title of the seo tags */
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type SeoTagCrumbs = {
+  __typename?: 'SeoTagCrumbs';
+  link?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteSetting = {
+  __typename?: 'SiteSetting';
+  id: Scalars['Int']['output'];
+  settings?: Maybe<Array<Maybe<KeyValue>>>;
+};
+
+export type SiteText = {
+  __typename?: 'SiteText';
+  body?: Maybe<Scalars['String']['output']>;
+};
+
+export type Slide = {
+  __typename?: 'Slide';
+  body?: Maybe<Scalars['String']['output']>;
+  id: Scalars['Int']['output'];
+  image?: Maybe<SlideImageItemType>;
+  image_element?: Maybe<SlideImageElementItemType>;
+  link?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type SlideImageElementItemType = {
+  __typename?: 'SlideImageElementItemType';
+  small?: Maybe<Scalars['String']['output']>;
+  small_webp?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
+  thumb?: Maybe<Scalars['String']['output']>;
+  thumb_webp?: Maybe<Scalars['String']['output']>;
+};
+
+export type SlideImageItemType = {
+  __typename?: 'SlideImageItemType';
+  slide_1x?: Maybe<Scalars['String']['output']>;
+  slide_1x_webp?: Maybe<Scalars['String']['output']>;
+  slide_2x?: Maybe<Scalars['String']['output']>;
+  slide_2x_webp?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
+};
+
+export type Station = {
+  __typename?: 'Station';
+  id: Scalars['Int']['output'];
+  image?: Maybe<StationImage>;
+  price?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type StationCategory = {
+  __typename?: 'StationCategory';
+  id: Scalars['Int']['output'];
+  stations?: Maybe<Array<Maybe<Station>>>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type StationImage = {
+  __typename?: 'StationImage';
+  large?: Maybe<Scalars['String']['output']>;
+  large_webp?: Maybe<Scalars['String']['output']>;
+  medium?: Maybe<Scalars['String']['output']>;
+  medium_webp?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
+};
+
+export type Story = {
+  __typename?: 'Story';
+  id: Scalars['Int']['output'];
+  image?: Maybe<StoryImage>;
+  stories?: Maybe<Array<Maybe<StoryContent>>>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type StoryContent = {
+  __typename?: 'StoryContent';
+  body?: Maybe<Scalars['String']['output']>;
+  button_color?: Maybe<Scalars['String']['output']>;
+  button_link?: Maybe<Scalars['String']['output']>;
+  button_title?: Maybe<Scalars['String']['output']>;
+  id: Scalars['Int']['output'];
+  image?: Maybe<StoryImageContent>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type StoryImage = {
+  __typename?: 'StoryImage';
+  src?: Maybe<Scalars['String']['output']>;
+  thumb?: Maybe<Scalars['String']['output']>;
+  thumb_webp?: Maybe<Scalars['String']['output']>;
+  tiny?: Maybe<Scalars['String']['output']>;
+  tiny_webp?: Maybe<Scalars['String']['output']>;
+  xs?: Maybe<Scalars['String']['output']>;
+  xs_webp?: Maybe<Scalars['String']['output']>;
+};
+
+export type StoryImageContent = {
+  __typename?: 'StoryImageContent';
+  medium?: Maybe<Scalars['String']['output']>;
+  medium_webp?: Maybe<Scalars['String']['output']>;
+  small?: Maybe<Scalars['String']['output']>;
+  small_webp?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
+};
+
+export type TitleName = {
+  __typename?: 'TitleName';
+  id: Scalars['Int']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type TitleValues = {
+  __typename?: 'TitleValues';
+  title?: Maybe<Scalars['String']['output']>;
+  values?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Wheel = {
+  __typename?: 'Wheel';
+  id: Scalars['Int']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type GetOffersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetOffersQuery = { __typename?: 'Query', offers?: { __typename?: 'OfferTypePagination', data?: Array<{ __typename?: 'Offer', description?: string | null, price: number, price_old?: number | null, bodyType?: { __typename?: 'BodyType', name?: string | null } | null, color?: { __typename?: 'Color', name?: string | null } | null } | null> | null } | null };
+
+
+export const GetOffersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOffers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bodyType"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"color"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"price_old"}}]}}]}}]}}]} as unknown as DocumentNode<GetOffersQuery, GetOffersQueryVariables>;

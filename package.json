@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@graphql-codegen/cli": "5.0.0",
+    "@nuxt/image": "^1.0.0-rc.3",
     "@pinia/nuxt": "^0.4.11",
     "@vue/apollo-composable": "^4.0.0-beta.11",
     "graphql-config": "^5.0.3",
