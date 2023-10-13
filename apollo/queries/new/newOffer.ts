@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const newOfferPageGql: DocumentNode = gql`query offer($site_id: Int!,$folder_slug:String, $mark_slug:String, $id:Int) {
     offer(site_id: $site_id,mark_slug:$mark_slug, folder_slug:$folder_slug, id:$id)
@@ -69,7 +69,7 @@ export const newOfferPageGql: DocumentNode = gql`query offer($site_id: Int!,$fol
         }
         is_active
     }
-}`
+}`;
 
 export type NewOfferPageInputType = {
     mark_slug: string

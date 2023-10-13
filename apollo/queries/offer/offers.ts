@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const offersGql: DocumentNode = gql`
     query offers(
@@ -120,7 +120,7 @@ export const offersGql: DocumentNode = gql`
             total
             has_more_pages
         }
-    }`
+    }`;
 export type OffersInputType = {
     page?: number | null
     limit?: number

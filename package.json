@@ -15,6 +15,7 @@
     "@graphql-codegen/client-preset": "4.1.0",
     "@nuxt/devtools": "latest",
     "@nuxtjs/apollo": "^5.0.0-alpha.7",
+    "@vue/eslint-config-typescript": "^12.0.0",
     "nuxt": "^3.7.4"
   },
   "dependencies": {
@@ -22,6 +23,9 @@
     "@nuxt/image": "^1.0.0-rc.3",
     "@pinia/nuxt": "^0.4.11",
     "@vue/apollo-composable": "^4.0.0-beta.11",
+    "eslint": "^8.49.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-vue": "^9.16.1",
     "graphql-config": "^5.0.3",
     "pinia": "^2.1.6"
   }

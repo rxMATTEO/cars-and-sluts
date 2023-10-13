@@ -1,5 +1,5 @@
-import {defineStore} from 'pinia'
-import {request} from "~/helpers/request";
+import { defineStore } from 'pinia';
+import { request } from '~/helpers/request';
 import {
   siteConfigGql,
   SiteConfigType,
@@ -7,7 +7,7 @@ import {
   CatalogType,
   SetType,
   SiteSettingType
-} from "~/apollo/queries/siteConfig";
+} from '~/apollo/queries/siteConfig';
 
 interface SettingSite {
   counter_ym: string,
@@ -35,22 +35,22 @@ export const useSiteConfig = defineStore('siteConfig', {
 
   actions: {
     async setIsNight(payload: boolean) {
-      this.isNight = payload
+      this.isNight = payload;
     },
     async getSiteConfig() {
       try {
-        const {data} = await request<SiteConfigType>(siteConfigGql, undefined, true)
-        this.seoTag = data.value.seoTag
+        const { data } = await request<SiteConfigType>(siteConfigGql, undefined, true);
+        this.seoTag = data.value.seoTag;
         // @ts-ignore
         data.value?.siteSettings.settings.map(setting => {
           // @ts-ignore
-          this.settings[setting.key] = setting.value
-        })
-        this.catalog = data.value.catalog
-        this.sets = data.value.sets
+          this.settings[setting.key] = setting.value;
+        });
+        this.catalog = data.value.catalog;
+        this.sets = data.value.sets;
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
   }
-})
+});

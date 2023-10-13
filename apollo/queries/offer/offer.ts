@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const offerGql: DocumentNode = gql`
 query offer(
@@ -85,7 +85,7 @@ query offer(
         name
     }
   }
-}`
+}`;
 export type OfferPageInputType = {
     mark_slug: string
     folder_slug: string

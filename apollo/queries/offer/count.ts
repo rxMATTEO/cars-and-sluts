@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const countGql: DocumentNode = gql`
     query offers(
@@ -29,7 +29,7 @@ export const countGql: DocumentNode = gql`
         ) {
             total
         }
-    }`
+    }`;
 export type CountInputType = {
     mark_slug_array?: string[] | null
     folder_slug_array?: string[] | null

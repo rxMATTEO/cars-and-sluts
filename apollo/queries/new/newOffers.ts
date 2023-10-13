@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const newOffersGql: DocumentNode = gql`query offers(
     $site_id: Int!,
@@ -94,7 +94,7 @@ export const newOffersGql: DocumentNode = gql`query offers(
         current_page
         has_more_pages
     }
-}`
+}`;
 
 export type NewOffersInputType = {
     page?: number | null

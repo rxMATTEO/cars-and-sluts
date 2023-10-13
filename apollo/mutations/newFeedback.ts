@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const sendNewFeedbackGql: DocumentNode = gql`
     mutation feedback(
@@ -74,7 +74,7 @@ export const sendNewFeedbackGql: DocumentNode = gql`
             comment: $comment){
             id
         }
-    }`
+    }`;
 export type SendNewFeedback = {
     type_enum: string
     folder_id?: number,

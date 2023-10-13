@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const foldersGql: DocumentNode = gql`query folders($site_id: Int!, $popular: Boolean, $mark_slug:String, $sort: String, $page:Int, $limit:Int) {
     folders(site_id: $site_id,mark_slug:$mark_slug,sort:$sort,page: $page,limit: $limit , popular:$popular)
@@ -36,7 +36,7 @@ export const foldersGql: DocumentNode = gql`query folders($site_id: Int!, $popul
             }
         }
     }
-}`
+}`;
 
 export type FoldersInput = {
     page?: number | null

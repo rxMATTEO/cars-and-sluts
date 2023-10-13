@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const filterGql: DocumentNode = gql`
     query offerFilters(
@@ -48,7 +48,7 @@ export const filterGql: DocumentNode = gql`
             run
             price
         }
-    }`
+    }`;
 export type OfferFiltersInputType = {
     mark_slug_array?: string[]
     folder_slug_array?: string[]

@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const banksGql: DocumentNode = gql`
 query banks(
@@ -19,7 +19,7 @@ query banks(
         rate
         image       
       }
-}`
+}`;
 export type BanksTypeData = {
     banks: BankType[]
 }

@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const siteConfigGql: DocumentNode = gql`
     query seoTag(
@@ -45,7 +45,7 @@ export const siteConfigGql: DocumentNode = gql`
             title
             slug
         }
-    }`
+    }`;
 
 
 export type SiteConfigType = {

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {newOffersGql, NewOfferType} from "~/apollo/queries/new/newOffers";
-import {request} from "~/helpers/request";
-import {_AsyncData} from "#app/composables/asyncData";
+import { newOffersGql, NewOfferType } from '~/apollo/queries/new/newOffers';
+import { request } from '~/helpers/request';
+import { _AsyncData } from '#app/composables/asyncData';
 type WrappedOffer = { offers : { data: NewOfferType[] } }
 
 async function requestNewOffers(variables): Promise<_AsyncData<WrappedOffer, Error>>{
-  return await request(newOffersGql, variables, true, true)
+  return await request(newOffersGql, variables, true, true);
 }
 let variables = computed(() => {
   return {
@@ -14,8 +14,8 @@ let variables = computed(() => {
     sort: 'created_at|desc',
     page: 1,
     limit: 4
-  }
-})
+  };
+});
 
 const { data: offers } = await requestNewOffers(variables.value);
 </script>

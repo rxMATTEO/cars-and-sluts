@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const folderGql: DocumentNode = gql`query folder($site_id: Int!, $mark_slug:String, $slug:String) {
     folder(site_id: $site_id,mark_slug:$mark_slug,slug:$slug)
@@ -113,7 +113,7 @@ export const folderGql: DocumentNode = gql`query folder($site_id: Int!, $mark_sl
             original
         }
     }
-}`
+}`;
 
 export type FolderPageInput = {
     mark_slug: string

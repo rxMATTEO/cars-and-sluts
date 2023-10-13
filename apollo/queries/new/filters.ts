@@ -1,4 +1,4 @@
-import {DocumentNode} from "graphql/language";
+import { DocumentNode } from 'graphql/language';
 
 export const filterNewGql: DocumentNode = gql`
     query offerFilter(
@@ -51,7 +51,7 @@ export const filterNewGql: DocumentNode = gql`
             count
             price
         }
-    }`
+    }`;
 export type OfferFilterNewInputType = {
   page?: number
   limit?: number
